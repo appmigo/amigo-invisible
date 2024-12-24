@@ -28,12 +28,13 @@
     button {
       background-color: #4CAF50;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       margin: 10px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
     }
     button:hover {
       background-color: #45a049;
@@ -73,24 +74,34 @@
     // Fecha correcta
     const correctDate = '21/09';
 
+    // Función para lanzar confetti
+    function launchConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { x: 0.5, y: 0.5 }
+      });
+    }
+
     // Función que maneja la elección de la fecha
     function checkAnswer(selectedDate) {
-  const resultElement = document.getElementById('result');
-  
-  if (attempts > 0) {
-    if (selectedDate === correctDate) {
-      resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
-      resultElement.style.color = "green";
-    } else {
-      attempts--;
-      resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
-      resultElement.style.color = "red";
+      const resultElement = document.getElementById('result');
+      
+      if (attempts > 0) {
+        if (selectedDate === correctDate) {
+          resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
+          resultElement.style.color = "green";
+          launchConfetti();  // Lanza confetti al acertar
+        } else {
+          attempts--;
+          resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
+          resultElement.style.color = "red";
+        }
+      } else {
+        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        resultElement.style.color = "blue";
+      }
     }
-  } else {
-    resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
-    resultElement.style.color = "blue";
-  }
-}
   </script>
 
 </body>
