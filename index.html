@@ -70,8 +70,73 @@
     <button onclick="checkAnswer('22/11')">22 de Noviembre</button>
     <button onclick="checkAnswer('25/04')">25 de Abril</button>
     <button onclick="checkAnswer('21/09')">21 de Septiembre</button>
+    <button onclick="checkAnswer('16/07')">16 de Julio (Maracaná)</button>
     <button onclick="checkAnswer('28/12')">28 de Diciembre</button>
+    <button onclick="checkAnswer('18/07')">18 de Julio (Fecha patria)</button>
   </div>
 
   <!-- Pop-up para mostrar el mensaje -->
-  <div class="popup" id=
+  <div class="popup" id="popup"></div>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    // Configuración inicial
+    const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
+    document.getElementById('user-name').textContent = userName;
+    
+    let attempts = 2;  // Número máximo de intentos
+
+    // Fecha correcta
+    const correctDate = '21/09';
+
+    // Función para lanzar confetti
+    function launchConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { x: 0.5, y: 0.5 }
+      });
+    }
+
+    // Función que maneja la elección de la fecha
+    function checkAnswer(selectedDate) {
+      const resultElement = document.getElementById('result');
+      const popupElement = document.getElementById('popup');
+      
+      if (attempts > 0) {
+        if (selectedDate === correctDate) {
+          // Mensaje de acierto en el pop-up y confetti
+          resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
+          resultElement.style.color = "green";
+          popupElement.textContent = "¡Correcto! El regalo viene de Matute.";
+          popupElement.style.backgroundColor = "green";
+          popupElement.style.display = "flex";
+          launchConfetti();  // Lanza confetti al acertar
+        } else {
+          attempts--;
+          // Mensaje de error en el pop-up
+          resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
+          resultElement.style.color = "red";
+          popupElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
+          popupElement.style.backgroundColor = "red";
+          popupElement.style.display = "flex";
+        }
+      } else {
+        // Cuando se acabaron los intentos
+        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        resultElement.style.color = "blue";
+        popupElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        popupElement.style.backgroundColor = "blue";
+        popupElement.style.display = "flex";
+      }
+      
+      // Cerrar el pop-up después de unos segundos
+      setTimeout(function() {
+        popupElement.style.display = "none";
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
