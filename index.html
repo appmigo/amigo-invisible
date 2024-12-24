@@ -75,22 +75,22 @@
 
     // Función que maneja la elección de la fecha
     function checkAnswer(selectedDate) {
-  const resultElement = document.getElementById('result');
-  
-  if (attempts > 0) {
-    if (selectedDate === correctDate) {
-      resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
-      resultElement.style.color = "green";
-    } else {
-      attempts--;
-      resultElement.textContent = ¡Incorrecto! Te quedan ${attempts} intentos.;
-      resultElement.style.color = "red";
+      const resultElement = document.getElementById('result');
+      
+      if (attempts > 0) {
+        if (selectedDate === correctDate) {
+          resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
+          resultElement.style.color = "green";
+        } else {
+          attempts--;
+          resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
+          resultElement.style.color = "red";
+        }
+      } else {
+        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        resultElement.style.color = "blue";
+      }
     }
-  } else {
-    resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
-    resultElement.style.color = "blue";
-  }
-}
   </script>
 
 </body>
