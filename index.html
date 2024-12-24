@@ -61,8 +61,8 @@
 </head>
 <body>
 
-  <h1>¡Bienvenido al Appmigo Invisible!</h1>
-  <p class="message">Hola <span id="user-name"></span>, para saber quién es tu amigo invisible deberás elegir una fecha y ver si es quién tú creías. ¡Suerte!</p>
+  <h1>¡Hola Martín!</h1>
+  <p class="message">Para descubrir a tu amigo invisible no te voy a dar pistas, pero sí vas a tener que acertar la fecha de cumpleaños. Tenés 3 intentos. ¡Suerte!</p>
   
   <div class="choices">
     <p>Elige una de las siguientes fechas:</p>
@@ -85,7 +85,7 @@
     const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
     document.getElementById('user-name').textContent = userName;
     
-    let attempts = 2;  // Número máximo de intentos
+    let attempts = 3;  // Número máximo de intentos
 
     // Fecha correcta
     const correctDate = '21/09';
@@ -124,9 +124,9 @@
         }
       } else {
         // Cuando se acabaron los intentos
-        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        resultElement.textContent = "¡Se acabaron los intentos! Aunque le pusiste pocas ganas te digo: el regalo es de Matute";
         resultElement.style.color = "blue";
-        popupElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
+        popupElement.textContent = "¡Se acabaron los intentos! Aunque le pusiste pocas ganas te digo: el regalo es de Matute";
         popupElement.style.backgroundColor = "blue";
         popupElement.style.display = "flex";
       }
