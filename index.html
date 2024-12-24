@@ -43,6 +43,20 @@
       font-size: 20px;
       font-weight: bold;
     }
+    .popup {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      font-size: 20px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
@@ -56,42 +70,8 @@
     <button onclick="checkAnswer('22/11')">22 de Noviembre</button>
     <button onclick="checkAnswer('25/04')">25 de Abril</button>
     <button onclick="checkAnswer('21/09')">21 de Septiembre</button>
-    <button onclick="checkAnswer('16/07')">16 de Julio (Maracaná)</button>
     <button onclick="checkAnswer('28/12')">28 de Diciembre</button>
-    <button onclick="checkAnswer('18/07')">18 de Julio (Fecha patria)</button>
   </div>
 
-  <div class="result" id="result"></div>
-
-  <script>
-    // Configuración inicial
-    const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
-    document.getElementById('user-name').textContent = userName;
-    
-    let attempts = 2;  // Número máximo de intentos
-
-    // Fecha correcta
-    const correctDate = '21/09';
-
-    // Función que maneja la elección de la fecha
-    function checkAnswer(selectedDate) {
-      const resultElement = document.getElementById('result');
-      
-      if (attempts > 0) {
-        if (selectedDate === correctDate) {
-          resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
-          resultElement.style.color = "green";
-        } else {
-          attempts--;
-          resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
-          resultElement.style.color = "red";
-        }
-      } else {
-        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
-        resultElement.style.color = "blue";
-      }
-    }
-  </script>
-
-</body>
-</html>
+  <!-- Pop-up para mostrar el mensaje -->
+  <div class="popup" id=
