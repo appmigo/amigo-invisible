@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amigo Invisible</title>
   <style>
@@ -50,7 +51,7 @@
   <p class="message">Hola <span id="user-name"></span>, para saber quién es tu amigo invisible deberás elegir una fecha y ver si es quién tú creías. ¡Suerte!</p>
   
   <div class="choices">
-    <p>Elige una de las siguientes fechas de cumpleaños:</p>
+    <p>Elige una de las siguientes fechas:</p>
     <button onclick="checkAnswer('10/10')">10 de Octubre</button>
     <button onclick="checkAnswer('22/11')">22 de Noviembre</button>
     <button onclick="checkAnswer('25/04')">25 de Abril</button>
@@ -74,6 +75,7 @@
     function checkAnswer(selectedDate) {
       const resultElement = document.getElementById('result');
       if (selectedDate === correctDate) {
+        confetti();
         resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
         resultElement.style.color = "green";
       } else {
