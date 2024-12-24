@@ -49,15 +49,17 @@
 <body>
 
   <h1>¡Hola Martín!</h1>
-  <p class="message">Para descubrir a tu amigo invisible deberás hacerlo mediante fechas de cumpleaños y ver si es quién tú creías. Tenés 3 intentos. ¡Suerte!</p>
+  <p class="message">Para descubrir a tu amigo invisible deberás probar suerte en estas fechas de cumpleaños. Tenés 3 intentos. ¡Suerte!</p>
   
   <div class="choices">
     <p>Elige una de las siguientes fechas:</p>
     <button onclick="checkAnswer('10/10')">10 de Octubre</button>
     <button onclick="checkAnswer('22/11')">22 de Noviembre</button>
     <button onclick="checkAnswer('25/04')">25 de Abril</button>
-    <button onclick="checkAnswer('21/09')">21 de Setiembre</button>
+    <button onclick="checkAnswer('21/09')">21 de Septiembre</button>
+    <button onclick="checkAnswer('16/07')">16 de Julio (Maracaná)</button>
     <button onclick="checkAnswer('28/12')">28 de Diciembre</button>
+    <button onclick="checkAnswer('18/07')">18 de Julio (Fecha patria)</button>
   </div>
 
   <div class="result" id="result"></div>
@@ -96,7 +98,7 @@
           resultElement.style.color = "red";
         }
       } else {
-        resultElement.textContent = "¡Marchaste! Igual te podés llevar el regalo es de Matute";
+        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
         resultElement.style.color = "blue";
       }
     }
