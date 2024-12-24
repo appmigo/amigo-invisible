@@ -68,7 +68,7 @@
     const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
     document.getElementById('user-name').textContent = userName;
     
-    let attempts = 3;  // Número máximo de intentos
+    let attempts = 2;  // Número máximo de intentos
 
     // Fecha correcta
     const correctDate = '21/09';
@@ -87,7 +87,7 @@
       resultElement.style.color = "red";
     }
   } else {
-    resultElement.textContent = "¡Se acabaron los intentos! El juego ha terminado, le pusiste pocas ganas! Jaja El regalo es de Matute";
+    resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
     resultElement.style.color = "blue";
   }
 }
