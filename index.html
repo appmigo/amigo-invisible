@@ -61,8 +61,8 @@
 </head>
 <body>
 
-  <h1>¡Hola Martín!</h1>
-  <p class="message">Para descubrir a tu amigo invisible no te voy a dar pistas, pero sí vas a tener que acertar la fecha de cumpleaños. Tenés 3 intentos. ¡Suerte!</p>
+  <h1>¡Bienvenido al Appmigo Invisible!</h1>
+  <p class="message">Hola <span id="user-name"></span>, para saber quién es tu amigo invisible deberás elegir una fecha y ver si es quién tú creías. ¡Suerte!</p>
   
   <div class="choices">
     <p>Elige una de las siguientes fechas:</p>
@@ -85,10 +85,14 @@
     const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
     document.getElementById('user-name').textContent = userName;
     
-    let attempts = 3;  // Número máximo de intentos
+    let attempts = 2;  // Número máximo de intentos
 
     // Fecha correcta
     const correctDate = '21/09';
+
+    // Cargar los sonidos de acierto y error
+    const successSound = new Audio('https://www.soundjay.com/button/beep-07.wav');  // Sonido de acierto
+    const errorSound = new Audio('https://www.soundjay.com/button/beep-10.wav');  // Sonido de error
 
     // Función para lanzar confetti
     function launchConfetti() {
@@ -106,6 +110,9 @@
       
       if (attempts > 0) {
         if (selectedDate === correctDate) {
+          // Sonido de acierto
+          successSound.play();
+
           // Mensaje de acierto en el pop-up y confetti
           resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
           resultElement.style.color = "green";
@@ -115,6 +122,9 @@
           launchConfetti();  // Lanza confetti al acertar
         } else {
           attempts--;
+          // Sonido de error
+          errorSound.play();
+
           // Mensaje de error en el pop-up
           resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
           resultElement.style.color = "red";
@@ -124,9 +134,9 @@
         }
       } else {
         // Cuando se acabaron los intentos
-        resultElement.textContent = "¡Se acabaron los intentos! Aunque le pusiste pocas ganas te digo: el regalo es de Matute";
+        resultElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
         resultElement.style.color = "blue";
-        popupElement.textContent = "¡Se acabaron los intentos! Aunque le pusiste pocas ganas te digo: el regalo es de Matute";
+        popupElement.textContent = "¡Se acabaron los intentos, le pusiste muy pocas ganas! El regalo es de Matute";
         popupElement.style.backgroundColor = "blue";
         popupElement.style.display = "flex";
       }
