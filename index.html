@@ -67,22 +67,30 @@
     // Configuración inicial
     const userName = "Martín";  // Aquí pones el nombre del usuario, o podrías pedirlo en un formulario
     document.getElementById('user-name').textContent = userName;
+    
+    let attempts = 3;  // Número máximo de intentos
 
     // Fecha correcta
     const correctDate = '21/09';
 
     // Función que maneja la elección de la fecha
     function checkAnswer(selectedDate) {
-      const resultElement = document.getElementById('result');
-      if (selectedDate === correctDate) {
-        confetti();
-        resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
-        resultElement.style.color = "green";
-      } else {
-        resultElement.textContent = "¡Incorrecto! Sigue buscando...";
-        resultElement.style.color = "red";
-      }
+  const resultElement = document.getElementById('result');
+  
+  if (attempts > 0) {
+    if (selectedDate === correctDate) {
+      resultElement.textContent = "¡Correcto! El regalo viene de Matute.";
+      resultElement.style.color = "green";
+    } else {
+      attempts--;
+      resultElement.textContent = `¡Incorrecto! Te quedan ${attempts} intentos.`;
+      resultElement.style.color = "red";
     }
+  } else {
+    resultElement.textContent = "¡Se acabaron los intentos! El juego ha terminado.";
+    resultElement.style.color = "blue";
+  }
+}
   </script>
 
 </body>
